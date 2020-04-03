@@ -1,0 +1,99 @@
+/* General settings */
+html{
+	font-family: "source sans pro" sans-serif;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+h1{
+	font-size: 2em;
+	margin: 0.67em 0;
+}
+
+/* button style */
+.button {
+	background-color: transparent; /* Green */
+	border: none;
+	border-radius: 15px;
+	color: white;
+	padding: 16px 10px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+}
+.button:focus{
+	outline: 1px dotted;
+	outline: 5px auto -webkit-focus-ring-color;
+}
+.button:hover {
+	opacity: 0.7;
+}
+
+/* body */
+body{
+	margin: 0;
+	height: 100%;
+	font-family: Source Sans Pro,Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 21.875px;
+	color: #333;
+	background-color: #efefef;
+}
+a,.a-link{
+	color: #344b61;
+	text-decoration: none
+}
+a:hover,.a-link:hover{
+	color: #036690;
+	text-decoration: underline
+}
+.a-link{
+	cursor: pointer
+}
+
+/* Add a blue background color to the top navigation */
+.topnav {
+	background-color: #00a7b5;
+	overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+	float: left;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+	font-size: 17px;
+}
+
+/* place logo */
+.logo{
+	display: inline-block;
+	float: none;
+	margin: 0.67em 0;
+	vertical-align: middle;
+}
+.logo img{
+	display: block;
+	max-height: 40px;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+	float: right;
+	text-align: center;
+}
+
+.top_btn {
+	border: 2px solid #e7e7e7;
+}
+
+/*mutl render */
+
+.multiline {
+	white-space: pre;
+}

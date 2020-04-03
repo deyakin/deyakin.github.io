@@ -1,7 +1,141 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="WebUSB based Android Debug Bridge (adb) to install apk" />
+		<link rel="manifest" href="manifest_WebApkInstaller.json" />
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<meta name="author" content= "" />
+		<meta property="og:title" content="Realwear essential apk installer" />
+		
+		<!-- Google font url if present -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,700,700italic,300,300italic"  type="text/css" />
+		<!-- <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:regular,italic,600,700,700italic' rel='stylesheet' type='text/css'>
+		<!--<link rel="stylesheet" type="text/css" href="https://www.w3schools.com/w3css/3/w3.css" />-->
+
+		<!-- my stylesheet -->		
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/modal.css">
+		<link rel="stylesheet" href="css/snackbar.css">
+		<link rel="stylesheet" href="css/loader.css">
+		<link rel="stylesheet" href="css/card.css">
+		
+		<!-- webadb script -->
+		<script src="script/WebAdb.js"> </script>
+	</head>
+	<body>		
+		<div class="topnav" id="AmaTopnav">
+			<div class="logo">
+				<img src="images/logo.png" alt="">
+			</div>
+			<div class="topnav-right">
+				<a class="button top_btn" id="help_button" onclick="document.getElementById('help_page').style.display='block'" style="width:auto;">Help</a>
+				<a class="button top_btn" id="about_button" onclick="document.getElementById('about_page').style.display='block'" style="width:auto;">About</a>
+			</div>
+		</div>
+		<br>
+
+		<div style="text-align:center">
+			<span class="dot"></span>
+			<span class="dot"></span>
+			<span class="dot"></span>
+		</div>
+		
+		<br>
+		
+		<div class="card-container">
+			<div class="card first_step" id="card_first_step">
+				<img src="images/connect_usb-device.png" alt="connect realwear" style="width:100%">
+				<h1>Select a device to install</h1>
+				<p>Step 1: Plug in your device</p>
+				<p>Connect your device using any USB cord.</p>
+				<p>Step 2: Select device</p>
+				<p>Click the Add new device below. If the browser menu doesn’t appear or your device isn’t listed, use help button on top bar.</p>
+				<p><button onclick="step1_click_function()">Add new device</button></p>
+				<span class="badge">1/3</span>
+			</div>
+			<div class="card second_step" id="card_second_step">
+				<img src="images/copy_to_usb-device.png" alt="install realwear" style="width:100%">
+				<h1>check information bellow</h1>
+				<div class="multiline" id= "multiline_device_info">
+					no device found
+					please click button "refresh usb"
+					to display information
+				</div>
+				<button onclick="refresh_usb_function()" id="refresh_usb">refresh usb</button>
+				<br/>
+				<div class="apk_input">
+					<label for="apk_to_install">
+						<strong>Choose the apk file to install :</strong>
+					</label>
+					<input class="apk_file" type="file" id="apk_to_install" name="apk_to_install[]" accept=".apk" />
+				</div>
+				<div id="drop_zone" style="text-align:center; padding: 10px;background-color: gainsboro; border:1px solid blue">Drop files here</div>
+				<output id="list"></output>
+				<p><button onclick="step2_click_function()">install apk</button></p>
+				<span class="badge">2/3</span>
+			</div>
+			<div class="card third_step" id="card_third_step">
+				<img src="images/check_apk.png" alt="check realwear" style="width:100%">
+				<h1>Operation complete</h1>
+				<p>here is the version of of the apk file installed</p>
+				<p>
+					<button onclick="step3_click_function()">restart</button></p>
+				<span class="badge">3/3</span>
+			</div>
+		</div>
+		
+		<div id="help_page" class="modal">
+			<form class="modal-content animate" action="/action_page.php" method="post">
+				<div class="imgcontainer">
+					<span onclick="document.getElementById('help_page').style.display='none'" class="close" title="Close Modal">&times;</span>
+					<img src="images/help.png" class="info_icon">
+					<div style="text-align:left;padding:0 0 0 10%;">
+						<h2>Having trouble connecting your device?</h2>
+						<p>&bull;  Chrome menu didn't appear</p>
+						<p>&bull;  Check that Chrome allows websites to ask for access to USB devices. Go to Settings > Advanced > Site Settings > USB Devices.</p>
+						<h2>Phone wasn’t listed in the Chrome menu</h2>
+						<p>&bull;  Disconnect and reconnect the USB cable. Then try connecting again.</p>
+						<p>&bull;  Try a different USB cable.</p>
+						<p>&bull;  If you are using a Windows computer, make sure you have downloaded and installed the <a href="https://developer.android.com/studio/run/oem-usb">Windows Android USB driver</a>.</p>
+						<h2>Phone was listed but unable to connect</h2>
+						<p>&bull;  Ensure that you have correctly prepared your device.</p>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<div id="about_page" class="modal">
+			<form class="modal-content animate" action="/action_page.php" method="post">
+				<div class="imgcontainer">
+					<span onclick="document.getElementById('about_page').style.display='none'" class="close" title="Close Modal">&times;</span>
+					<img src="images/info.png" class="info_icon">
+					<div style="text-align:left;padding:0 0 0 10%;">
+						<h2>Tool allowing to install apk on a device</h2>
+						<p>&bull;   Connect your device via USB cable</p>
+						<p>&bull;   Select the software you want to install</p>
+						<p>&bull;   Install the software on your device</p>
+					</div>
+					<br />
+					<h2>Important</h2>
+					<p>You need additional software for Windows (Android USB driver) to connect your device. link below :</p>
+					<a href="https://developer.android.com/studio/run/oem-usb">Windows Android USB driver</a>					
+				</div>
+			</form>
+		</div>
+		<!-- The actual snackbar -->
+		<div id="snackbar">Some text some message..</div>
+		<!-- The loader popup -->
+		<div id="loadingPopUp">
+			<div class="loader"></div>
+			<p>Please Wait!</p>
+		</div>
+		
+		<script src="script/main.js"> </script>	
+		<script src="script/usb.js"> </script>
+		<script src="script/dragndrop.js"> </script>
+
+	</body>
 </html>

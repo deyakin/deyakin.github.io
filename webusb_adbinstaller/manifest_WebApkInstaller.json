@@ -1,0 +1,13 @@
+{
+  "name": "Android APK installer WebApp",
+  "short_name": "WebAPKinstall",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "images/web_app_icon_204px.png",
+      "type": "image/png",
+      "sizes": "204x240"
+    }
+  ],
+  "start_url": "index.html?webapp=yes"
+}

@@ -1,0 +1,97 @@
+/* The dots/bullets/indicators */
+.dot {
+	cursor: pointer;
+	height: 15px;
+	width: 15px;
+	margin: 0 2px;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+	background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+	-webkit-animation-name: fade;
+	-webkit-animation-duration: 1.5s;
+	animation-name: fade;
+	animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+	from {
+		opacity: .4
+	}
+	to {
+		opacity: 1
+	}
+}
+
+@keyframes fade {
+	from {
+		opacity: .4
+	}
+	to {
+		opacity: 1
+	}
+}
+
+/* card with instruction */
+.card-container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.card {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	width: 400px;
+	margin: auto;
+	text-align: center;
+	position: relative;
+}
+
+.card button {
+	border: none;
+	border-radius: 12px;
+	outline: 0;
+	padding: 12px;
+	color: white;
+	background-color: #00a7b5;
+	text-align: center;
+	cursor: pointer;
+	width: 90%;
+	font-size: 18px;
+}
+
+.refresh_usb {
+	width: 60%;
+	height: 80%;
+}
+
+.card button:hover {
+	opacity: 0.7;
+}
+
+.card .badge {
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	padding: 5px 10px;
+	border-radius: 50%;
+	background: #00a7b5;
+	color: white;
+}
+
+.second_step {
+	display: none; /* Hidden by default */
+}
+
+.third_step {
+	display: none; /* Hidden by default */
+}
